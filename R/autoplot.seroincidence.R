@@ -7,7 +7,7 @@
 #' @return a [ggplot2::ggplot()]
 #' @export
 #' @examples
-#'
+#'\donttest{
 #' library(dplyr)
 #' library(ggplot2)
 #'
@@ -29,11 +29,13 @@
 #'
 #' # Plot the log-likelihood curve
 #' autoplot(est1)
-#'
-autoplot.seroincidence =
-  function(object, log_x = FALSE, ...)
-{
-  to_return = attr(object, "ll_graph")
+#' }
+autoplot.seroincidence <-function(
+    object,
+    log_x = FALSE,
+    ...)
+  {
+    to_return = attr(object, "ll_graph")
 
     if (is.null(to_return)) {
       stop(

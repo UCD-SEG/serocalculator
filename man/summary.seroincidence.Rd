@@ -39,7 +39,7 @@ a \code{\link[tibble:tibble]{tibble::tibble()}} containing the following:
 This function is a \code{summary()} method for \code{seroincidence} objects.
 }
 \examples{
-
+\donttest{
 library(dplyr)
 
 xs_data <- load_pop_data("https://osf.io/download//n6cp3/")
@@ -58,4 +58,5 @@ est1 <- est.incidence(
 )
 
 summary(est1)
+}
 }

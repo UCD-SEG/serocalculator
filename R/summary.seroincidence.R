@@ -21,7 +21,7 @@
 #'    * 5: maximum step size `stepmax` exceeded five consecutive times. Either the function is unbounded below, becomes asymptotic to a finite value from above in some direction or `stepmax` is too small.
 #' @export
 #' @examples
-#'
+#' \donttest{
 #' library(dplyr)
 #'
 #' xs_data <- load_pop_data("https://osf.io/download//n6cp3/")
@@ -40,7 +40,8 @@
 #' )
 #'
 #' summary(est1)
-summary.seroincidence <- function(
+#' }
+summary.seroincidence = function(
     object,
     coverage = .95,
     ...) {

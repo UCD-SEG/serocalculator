@@ -26,9 +26,10 @@ a \code{\link[ggplot2:ggplot]{ggplot2::ggplot()}} object
 Plot method for \code{summary.seroincidence.by} objects
 }
 \examples{
-
+\donttest{
 library(dplyr)
 library(ggplot2)
+
 
 xs_data <- load_pop_data("https://osf.io/download//n6cp3/")
 
@@ -50,5 +51,5 @@ est2 <- est.incidence.by(
 est2sum <- summary(est2)
 
 autoplot(est2sum, "catchment")
-
+}
 }

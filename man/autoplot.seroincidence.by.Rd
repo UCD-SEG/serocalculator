@@ -27,7 +27,7 @@ Plots log-likelihood curves by stratum, for \code{seroincidence.by} objects
 
 library(dplyr)
 library(ggplot2)
-
+\donttest{
 xs_data <- "https://osf.io/download//n6cp3/" \%>\%
   load_pop_data()
 
@@ -36,6 +36,7 @@ curve <- load_curve_params("https://osf.io/download/rtw5k/") \%>\%
   slice(1:100, .by = antigen_iso) # Reduce dataset for the purposes of this example
 
 noise <- load_noise_params("https://osf.io/download//hqy4v/")
+
 
 est2 <- est.incidence.by(
   strata = c("catchment"),
@@ -49,5 +50,5 @@ est2 <- est.incidence.by(
 
 # Plot the log-likelihood curve
 autoplot(est2)
-
+}
 }

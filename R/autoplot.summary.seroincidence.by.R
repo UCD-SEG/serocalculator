@@ -10,9 +10,10 @@
 #' @return a [ggplot2::ggplot()] object
 #' @export
 #' @examples
-#'
+#'\donttest{
 #' library(dplyr)
 #' library(ggplot2)
+#'
 #'
 #' xs_data <- load_pop_data("https://osf.io/download//n6cp3/")
 #'
@@ -34,7 +35,7 @@
 #' est2sum <- summary(est2)
 #'
 #' autoplot(est2sum, "catchment")
-#'
+#' }
 autoplot.summary.seroincidence.by <- function(
     object,
     xvar,

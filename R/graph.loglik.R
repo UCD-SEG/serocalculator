@@ -6,18 +6,19 @@
 #' @param log_x should the x-axis be on a logarithmic scale (`TRUE`) or linear scale (`FALSE`, default)?
 #' @param previous_plot if not NULL, the current data is added to the existing graph
 #' @param curve_label if not NULL, add a label for the curve
+#' @param pop_data a [data.frame()] with cross-sectional serology data per antibody and age, and additional columns
+#' @param antigen_isos Character vector listing one or more antigen isotypes. Values must match `pop_data`.
 #' @inheritParams log_likelihood
 #' @inheritDotParams log_likelihood -lambda
 #' @return a [ggplot2::ggplot()]
 #' @export
 #' @examples
-#'
+#' \donttest{
 #' library(dplyr)
 #' library(tibble)
 #'
 #' # Load cross-sectional data
 #' xs_data <- load_pop_data("https://osf.io/download//n6cp3/")
-#'
 #'
 #' # Load curve parameters and subset for the purposes of this example
 #' dmcmc <- load_curve_params("https://osf.io/download/rtw5k/") %>%
@@ -42,8 +43,8 @@
 #' )
 #'
 #' lik_HlyE_IgA
-#'
-graph.loglik = function(
+#' }
+graph.loglik <- function(
     pop_data,
     curve_params,
     noise_params,
@@ -78,7 +79,8 @@ graph.loglik = function(
       )
     )
 
-  if (is.null(previous_plot)) {
+  if (is.null(previous_plot))
+  {
     plot1 <- plot_data %>%
       ggplot2::ggplot(ggplot2::aes(x = .data$x, y = .data$y)) +
       # ggplot2::geom_point() +

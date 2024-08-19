@@ -10,7 +10,7 @@
 #'
 #' library(dplyr)
 #' library(ggplot2)
-#'
+#'\donttest{
 #' xs_data <- "https://osf.io/download//n6cp3/" %>%
 #'   load_pop_data()
 #'
@@ -19,6 +19,7 @@
 #'   slice(1:100, .by = antigen_iso) # Reduce dataset for the purposes of this example
 #'
 #' noise <- load_noise_params("https://osf.io/download//hqy4v/")
+#'
 #'
 #' est2 <- est.incidence.by(
 #'   strata = c("catchment"),
@@ -32,8 +33,8 @@
 #'
 #' # Plot the log-likelihood curve
 #' autoplot(est2)
-#'
-autoplot.seroincidence.by = function(
+#' }
+autoplot.seroincidence.by <- function(
     object,
     ncol = min(3, length(object)),
     ...) {

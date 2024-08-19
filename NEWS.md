@@ -1,6 +1,18 @@
-# serocalculator (development version)
+# serocalculator (published versions)
 
-# serocalculator 1.2.0
+## serocalculator 1.0.3
+* Published to CRAN
+
+## serocalculator 1.0.2
+* Updated documentation and functionality based on CRAN re-submission
+* Deleted get_additional_data.R as it is no longer used
+
+# serocalculator (development versions)
+
+## serocalculator 1.0.3.9000
+* Reconciled CRAN version 1.0.3 with GitHub main branch (version)
+
+## serocalculator 1.2.0
 * Added `test-summary.pop_data` test
 
 * Modified `test-est.incidence` test
@@ -10,7 +22,7 @@
 * Added `verbose` option for `check_pop_data()`, changing default behavior
 to avoid printing an OK message.
 
-# serocalculator 1.1.0
+## serocalculator 1.1.0
 
 * Renamed `llik()` to `log_likelihood()`
 
@@ -46,10 +58,11 @@ to avoid printing an OK message.
 
 * Replaced column name comparison on `check_pop_data()` to use attribute name on `pop_data` class
 
-# serocalculator 1.0.1
+## serocalculator 1.0.1
 
 * added `n_points` argument to `plot_curve_params_one_ab()`
 * Added `type = "age-scatter"` option for `autoplot.pop_data()`
+* Updated documentation for sim.cs and log-likelihood
 
 ## serocalculator 1.0.0
 

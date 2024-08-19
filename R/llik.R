@@ -1,7 +1,7 @@
 #' Calculate log-likelihood
-#'
 #' @description
-#' Calculates the log-likelihood of a set of cross-sectional antibody response data, for a given incidence rate (`lambda`) value.
+#' Calculates the log-likelihood of a set of cross-sectional antibody response data,
+#' for a given incidence rate (`lambda`) value.
 #' `r lifecycle::badge("deprecated")`
 #'
 #' `llik()` was renamed to [log_likelihood()] to create a more
@@ -47,7 +47,6 @@ llik <- function(
 #' * `eps`: measurement noise
 #' * `y.low`: lower limit of detection for the current antigen isotype
 #' * `y.high`: upper limit of detection for the current antigen isotype
-#'
 #' @param verbose logical: if TRUE, print verbose log information to console
 #' @param ... additional arguments passed to other functions (not currently used).
 #' @inheritParams f_dev
@@ -59,7 +58,7 @@ llik <- function(
 #'
 #' # load in longitudinal parameters
 #' dmcmc <- load_curve_params("https://osf.io/download/rtw5k")
-#'
+#'  \donttest{
 #' xs_data <- "https://osf.io/download//n6cp3/" %>%
 #'   load_pop_data()
 #'
@@ -72,15 +71,15 @@ llik <- function(
 #'   y.high = c(5e6, 5e6)
 #' ) # high cutoff (y.high)
 #'
-#' # Calculate log-likelihood
-#' ll_AG <- log_likelihood(
+#' #Calculate log-likelihood
+#'   ll_AG <- log_likelihood(
 #'   pop_data = xs_data,
 #'   curve_params = dmcmc,
 #'   noise_params = cond,
-#'   antigen_isos = c("HlyE_IgG", "HlyE_IgA"),
+#'   antigen_isos = c("HlyE_IgG","HlyE_IgA"),
 #'   lambda = 0.1
-#' ) %>% print()
-#'
+#'   ) %>% print()
+#' }
 log_likelihood <- function(
     lambda,
     pop_data,

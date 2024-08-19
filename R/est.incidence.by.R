@@ -32,7 +32,7 @@
 #'
 #' @export
 #' @examples
-#'
+#'\donttest{
 #' library(dplyr)
 #'
 #' xs_data <- load_pop_data("https://osf.io/download//n6cp3/")
@@ -42,6 +42,7 @@
 #'   slice(1:100, .by = antigen_iso) # Reduce dataset for the purposes of this example
 #'
 #' noise <- load_noise_params("https://osf.io/download//hqy4v/")
+#'
 #'
 #' est2 <- est.incidence.by(
 #'   strata = c("catchment"),
@@ -54,7 +55,7 @@
 #' )
 #'
 #' summary(est2)
-#'
+#' }
 est.incidence.by <- function(
     pop_data,
     curve_params,
