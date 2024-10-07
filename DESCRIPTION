@@ -38,6 +38,8 @@ Imports:
     tibble,
     tidyr,
     tidyselect,
+    cli,
+    and,
     utils
 Suggests:
     bookdown,
@@ -55,7 +57,14 @@ Suggests:
     ssdtools (>= 1.0.6.9016),
     testthat (>= 3.0.0),
     tidyverse,
-    qrcode
+    qrcode,
+    readr,
+    bookdown,
+    ggbeeswarm,
+    DT,
+    spelling,
+    withr
+LazyData: true
 LinkingTo: 
     Rcpp
 Config/testthat/edition: 3
