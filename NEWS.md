@@ -2,11 +2,10 @@
 
 ## New features
 
+* Added more details about contributing PRs in `Contributing.md` (#280)
 * Added outline to pkgdown website (#353)
-
 * Added verbose option for `summary.seroincidence()` and 
 `summary.seroincidence.by()` (#348)
-
 * Extended `simulate_xsectionalData.Rmd` article to explore
 `renew_params = TRUE` vs `renew_params = FALSE` (#348)
 
