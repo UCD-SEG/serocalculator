@@ -16,6 +16,7 @@ on:
       - 'man/**'
       - 'pkgdown/**'
       - 'vignettes/**'
+      - '_pkgdown.yml'
   push:
     tags:
       - 'v[0-9]+.[0-9]+.[0-9]+'         # build on version tags
@@ -35,10 +36,15 @@ jobs:
   pkgdown-build:
     runs-on: ubuntu-latest
     if: ${{ !(github.event_name == 'pull_request' && github.event.action == 'closed') }}
+    # Only restrict concurrency for non-PR jobs
+    concurrency:
+      group: pkgdown-${{ github.event_name != 'pull_request' || github.run_id }}
+    permissions:
+      contents: write
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - name: Configure git
         run: |
@@ -63,7 +69,7 @@ jobs:
             website
           extra-packages: |
             local::.
-            any::pkgdown
+            r-lib/pkgdown
 
       # If events is a PR, set subdir to 'preview/pr<pr_number>'
       - name: "[PR] Set documentation subdirectory"
@@ -92,8 +98,14 @@ jobs:
           subdir <- "${{ env.subdir }}"
           pkg <- pkgdown::as_pkgdown(".")
 
+          # https://github.com/r-lib/pkgdown/issues/2844#issuecomment-2619120436:
+          pkgdown::init_site()
+          cat("init site done", file = Sys.getenv("GITHUB_OUTPUT"), append = TRUE)
+          pkgdown:::build_quarto_articles(quiet = FALSE)
+          cat("build articles done",  file = Sys.getenv("GITHUB_OUTPUT"), append = TRUE)
+
           # Deploy pkgdown site to branch
-          pkgdown::deploy_to_branch(subdir = if (nzchar(subdir)) subdir, clean = nzchar(subdir), quiet = FALSE)
+          pkgdown::deploy_to_branch(subdir = if (nzchar(subdir)) subdir, clean = nzchar(subdir))
 
           # Report deployed site URL
           deployed_url <- file.path(pkg$meta$url, subdir)
